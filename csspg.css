@@ -22,10 +22,11 @@ header {
 font-size: 35px;
 background-color: #ffb6c1;
 }
-hl1 {
+a.hl1 {
   text-decoration: none;
   color:black;
 }
-hl1:hover {
+a.hl1:hover {
   text-decoration:underline;
+}
 }
