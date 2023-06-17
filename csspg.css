@@ -29,3 +29,10 @@ a.hl1 {
 a.hl1:hover {
   text-decoration:underline;
 }
+a.hl2 {
+  color:black;
+  text-decoration:underline;
+}
+a.hl2:hover {
+  text-decoration:none;
+}
