@@ -37,3 +37,8 @@ a.hl2:hover {
   color:black;
   text-decoration:none;
 }
+img.acount-icon {
+  float:left;
+  width:25px;
+  height:25px;
+}
