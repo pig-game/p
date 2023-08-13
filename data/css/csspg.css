@@ -44,6 +44,6 @@ img.acount-icon {
   height:25px;
 }
 
-p.red-error-text {
+strong.red-error-text {
   color:red;
 }
