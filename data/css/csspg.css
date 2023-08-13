@@ -43,3 +43,7 @@ img.acount-icon {
   width:25px;
   height:25px;
 }
+
+p.red-error-text {
+  color:red;
+}
