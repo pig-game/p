@@ -1,1 +1,4 @@
 Downloads test Pig Game.
+This is for testing setups
+this is just a text file
+this does NOT contain any game files
