@@ -44,10 +44,10 @@ img.acount-icon {
   height:25px;
 }
 
-strong.red-error-text {
+p.red-error-text {
   color:red;
 }
 
-strong.green-info-text {
+p.green-info-text {
   color:green;
 }
