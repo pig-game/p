@@ -53,5 +53,11 @@ p.green-info-text {
 }
 
 footer {
-  background-color: ffb6c1;
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #ffb6c1;
+   color: white;
+   text-align: center;
 }
