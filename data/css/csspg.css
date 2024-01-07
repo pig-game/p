@@ -52,7 +52,7 @@ p.green-info-text {
   color:green;
 }
 
-footer {
+.footer {
    position: fixed;
    left: 0;
    bottom: 0;
