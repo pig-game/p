@@ -52,11 +52,16 @@ p.green-info-text {
   color:green;
 }
 
-.footer {
+c1;
+   color: white;
+}
+
+footer {
    position: fixed;
    left: 0;
    bottom: 0;
    width: 100%;
    background-color: #ffb6c1;
-   color: white;
+   color: black;
+   
 }
