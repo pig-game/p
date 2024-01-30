@@ -22,11 +22,6 @@ background-color: red;
 header {
 font-size: 30px;
 background-color: #ffb6c1;
-position: fixed;
-left: 0;
-top: 0;
-width: 100%;
-color: black;
 }
 a.hl1 {
   text-decoration: none;
