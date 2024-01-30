@@ -20,8 +20,13 @@ nav li.selected {
 background-color: red;
 }
 header {
-font-size: 35px;
+font-size: 30px;
 background-color: #ffb6c1;
+position: fixed;
+left: 0;
+top: 0;
+width: 100%;
+color: black;
 }
 a.hl1 {
   text-decoration: none;
@@ -61,11 +66,3 @@ p.green-info-text {
    color: black;
    text-align: center;
 }
-
-header {
-   position: fixed;
-   left: 0;
-   top: 0;
-   width: 100%;
-   background-color: #ffb6c1;
-   color: black;
