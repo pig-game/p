@@ -8,15 +8,21 @@
       h1{
         font-family: sans-serif;
       }
+      button {
+        background-color: green;
+      }
     </style>
   </head>
   <body>
     <center>
-      <h1 class="huge">Starting Pig Game Demo Version...</h1>
+      <h1 class="huge">Pig Game Demo Version</h1>
+      <button onclick="startgame()">Play</button>
     </center>
   </body>
 </html>
 <script>
-  window.open("https://piggame.co.uk/data/demoversion", "_blank", "width=500,height=420");
-  window.location.replace('https://piggame.co.uk/about');
+  function startgame() {
+    window.open("https://piggame.co.uk/data/demoversion", "_blank", "width=500,height=420");
+  }
+  //window.location.replace('https://piggame.co.uk/about');
 </script>
