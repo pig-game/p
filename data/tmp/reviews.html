@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Reviews Page</title>
+  <title>Reviews - Pig Game</title>
   <script>
-    function loadReviews() {
-      const reviews = localStorage.getItem('reviews');
-      if (reviews) {
+    async function loadReviews() {
+      try {
+        const response = await fetch('/reviews');
+        const reviews = await response.text();
         document.getElementById('reviews').innerText = reviews;
-      } else {
-        document.getElementById('reviews').innerText = 'No reviews yet.';
+      } catch (error) {
+        console.error('Error fetching reviews:', error);
+        document.getElementById('reviews').innerText = 'Error loading reviews.';
       }
     }
 
-    function addReview() {
+    async function addReview() {
       const newReview = document.getElementById('reviewInput').value;
       if (newReview) {
-        let reviews = localStorage.getItem('reviews');
-        reviews = reviews ? reviews + `\n${newReview}` : newReview;
-        localStorage.setItem('reviews', reviews);
-        document.getElementById('reviews').innerText = reviews;
-        document.getElementById('reviewInput').value = ''; // Clear the input box
+        try {
+          const response = await fetch('/reviews', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ review: newReview })
+          });
+          const message = await response.text();
+          console.log(message);
+          loadReviews(); // Reload reviews after adding a new one
+        } catch (error) {
+          console.error('Error adding review:', error);
+        }
       }
     }
 
