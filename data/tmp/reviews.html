@@ -1,12 +1,36 @@
 <!DOCTYPE html>
 <html>
- <head>
-  <title>Pig Game Reviews</title>
-  <link type="text/css" rel="stylesheet" href="data/css/csspg.css"/>
-  <script type="text/javascript" src="data/scripts/move-item.js"></script>
- </head>
- <body>
-  <header>
+<head>
+  <title>Reviews Page</title>
+  <script>
+    function loadReviews() {
+      fetch('reviews.txt')
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById('reviews').innerText = data;
+        })
+        .catch(error => {
+          console.error('Error fetching the reviews:', error);
+          document.getElementById('reviews').innerText = 'Error loading reviews.';
+        });
+    }
+
+    function addReview() {
+      const newReview = document.getElementById('reviewInput').value;
+      if (newReview) {
+        const reviewsElement = document.getElementById('reviews');
+        reviewsElement.innerText += `\n${newReview}`;
+        // Here you would typically send this review to the server to save it
+        console.log('New review added:', newReview); // For debugging purposes
+        document.getElementById('reviewInput').value = ''; // Clear the input box
+      }
+    }
+
+    window.onload = loadReviews;
+  </script>
+</head>
+<body>
+ <header>
    <h1>Pig Game Reviews</h1>
     <nav>
      <ul>
@@ -17,13 +41,8 @@
      </ul>
     </nav>
   </header>
-  <article>
-    <section>
-     <p><img scr="data/images/j_smith-acount-icon.jpg" class="acount-icon"/></p>
-     <h3>J. Smith</h3>
-     <p><br/></p>
-     <p>Needs goals to complete. Nothing to stop you winning. Shows promise as a beta</p>
-    </section>
-  </article>
- </body>
+  <div id="reviews">Loading reviews...</div>
+  <textarea id="reviewInput" placeholder="Write your review here..."></textarea><br>
+  <button onclick="addReview()">Post</button>
+</body>
 </html>
