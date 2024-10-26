@@ -4,24 +4,21 @@
   <title>Reviews Page</title>
   <script>
     function loadReviews() {
-      fetch('reviews.txt')
-        .then(response => response.text())
-        .then(data => {
-          document.getElementById('reviews').innerText = data;
-        })
-        .catch(error => {
-          console.error('Error fetching the reviews:', error);
-          document.getElementById('reviews').innerText = 'Error loading reviews.';
-        });
+      const reviews = localStorage.getItem('reviews');
+      if (reviews) {
+        document.getElementById('reviews').innerText = reviews;
+      } else {
+        document.getElementById('reviews').innerText = 'No reviews yet.';
+      }
     }
 
     function addReview() {
       const newReview = document.getElementById('reviewInput').value;
       if (newReview) {
-        const reviewsElement = document.getElementById('reviews');
-        reviewsElement.innerText += `\n${newReview}`;
-        // Here you would typically send this review to the server to save it
-        console.log('New review added:', newReview); // For debugging purposes
+        let reviews = localStorage.getItem('reviews');
+        reviews = reviews ? reviews + `\n${newReview}` : newReview;
+        localStorage.setItem('reviews', reviews);
+        document.getElementById('reviews').innerText = reviews;
         document.getElementById('reviewInput').value = ''; // Clear the input box
       }
     }
@@ -30,19 +27,9 @@
   </script>
 </head>
 <body>
- <header>
-   <h1>Pig Game Reviews</h1>
-    <nav>
-     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="download">Download</a></li>
-      <li><a href="about">About</a></li>
-      <li class="selected">Reveiws</li>
-     </ul>
-    </nav>
-  </header>
+  <h1>Customer Reviews</h1>
   <div id="reviews">Loading reviews...</div>
   <textarea id="reviewInput" placeholder="Write your review here..."></textarea><br>
-  <button onclick="addReview()">Post</button>
+  <button onclick="addReview()">Add a review</button>
 </body>
 </html>
