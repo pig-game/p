@@ -27,7 +27,7 @@
   <body>
     <center>
       <h1 class="huge" id="text">Pig Game Demo Version</h1>
-      <button class="play" onclick="startgame()" onhover="fadeText('Play Pig Game Demo Version">Play</button>
+      <button class="play" onclick="startgame()" onhover="fadeText('Play Pig Game Demo Version')">Play</button>
       <button class="download" onclick="downloadgame()" onhover="fadeText('Download this game')">
       <button class="quit" onclick="quitgame()" onhover="fadeText('Quit the game')">Quit</button>
       <p><img src="https://piggame.co.uk/data/images/piggamelogo.jpg" border="2px" alt="Pig Game Logo" class="floatleft"/></p>
@@ -43,7 +43,10 @@
   function startgame() {
     window.open("https://piggame.co.uk/data/demoversion", "_blank", "width=500,height=420");
   }
+  function downloadgame() {
+    window.location.replace('https://www.piggame.co.uk/download');
+  }
   function quitgame() {
-    window.location.replace('https://piggame.co.uk/about');
+    window.location.replace('https://www.piggame.co.uk/about');
   }
 </script>
