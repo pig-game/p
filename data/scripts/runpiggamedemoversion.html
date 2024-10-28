@@ -17,6 +17,11 @@
         color: black;
         font-size: 30px;
       }
+      button.download {
+        background-color: orange;
+        color: black;
+        font-size: 30px;
+      }
       button.quit {
         background-color: red;
         color: black;
@@ -27,9 +32,9 @@
   <body>
     <center>
       <h1 class="huge" id="text">Pig Game Demo Version</h1>
-      <button class="play" onclick="startgame()" onhover="fadeText('Play Pig Game Demo Version')">Play</button>
-      <button class="download" onclick="downloadgame()" onhover="fadeText('Download this game')">
-      <button class="quit" onclick="quitgame()" onhover="fadeText('Quit the game')">Quit</button>
+      <button class="play" onclick="startgame()">Play</button>
+      <button class="download" onclick="downloadgame()">Download</button>
+      <button class="quit" onclick="quitgame()">Quit</button>
       <p><img src="https://piggame.co.uk/data/images/piggamelogo.jpg" border="2px" alt="Pig Game Logo" class="floatleft"/></p>
     </center>
   </body>
