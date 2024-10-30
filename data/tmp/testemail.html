@@ -15,7 +15,7 @@
     <textarea id="message" placeholder="Message" required></textarea>
     <button type="submit">Send Email</button>
   </form>
-
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
     document.getElementById('emailForm').addEventListener('submit', function(event) {
       event.preventDefault();
