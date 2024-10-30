@@ -1,63 +1,68 @@
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Pig Game Demo Version</title>
-    <link type="text/css" rel="stylesheet" href="https://www.piggame.co.uk/data/css/csspg.css"/>
-    <style>
-      h1.huge {
-        font-size:30px;
-      }
-      h1{
-        font-family: sans-serif;
-      }
-      button {
-        border: none; /* Removes the border */
-        outline: none; /* Removes the outline when the button is clicked */
-      }
-      button.play {
-        background-color: green;
-        color: black;
-        font-size: 30px;
-      }
-      button.download {
-        background-color: orange;
-        color: black;
-        font-size: 30px;
-      }
-      button.quit {
-        background-color: red;
-        color: black;
-        font-size: 30px;
-      }
-    </style>
-  </head>
-  <body>
-    <center>
-      <p><img src="https://piggame.co.uk/data/images/piggamelogo.jpg" border="2px" alt="Pig Game Logo" class="floatleft"/></p>
-      <h1 class="huge" id="text">Pig Game Demo Version</h1>
-      <button class="play" onclick="startgame()">Play</button>
-      <button class="download" onclick="downloadgame()">Download</button>
-      <button class="quit" onclick="quitgame()">Quit</button>
-    </center>
-  </body>
-</html>
-<script>
-  function fadeText(fade) {
-    $('#text').fadeOut(function() {
-      $(this).text(fade).fadeIn();
-    });
-  }
-  function startgame() {
-    window.open("https://piggame.co.uk/data/demoversion", "_blank", "width=500,height=420");
-  }
-  function downloadgame() {
-    var popupbox = confirm("Sorry, downloads are currently unavalible. \nFor more info, head to the downloads page. \nWould you like to go to the downloads page now?");                   
-    //window.location.replace('https://www.piggame.co.uk/download');
-    if (popupbox = true) {
-      window.location.replace('https://www.piggame.co.uk/download')
-    } else {
-      //continue
+<head>
+  <title>Pig Game Demo Version</title>
+  <link type="text/css" rel="stylesheet" href="https://www.piggame.co.uk/data/css/csspg.css"/>
+  <style>
+    h1.huge {
+      font-size: 30px;
     }
-  function quitgame() {
-    window.location.replace('https://www.piggame.co.uk/about');
-  }
-</script>
+    h1 {
+      font-family: sans-serif;
+    }
+    button {
+      border: none; /* Removes the border */
+      outline: none; /* Removes the outline when the button is clicked */
+    }
+    button.play {
+      background-color: green;
+      color: black;
+      font-size: 30px;
+    }
+    button.download {
+      background-color: orange;
+      color: black;
+      font-size: 30px;
+    }
+    button.quit {
+      background-color: red;
+      color: black;
+      font-size: 30px;
+    }
+  </style>
+</head>
+<body>
+  <center>
+    <p><img src="https://piggame.co.uk/data/images/piggamelogo.jpg" border="2px" alt="Pig Game Logo" class="floatleft"/></p>
+    <h1 class="huge" id="text">Pig Game Demo Version</h1>
+    <button class="play" onclick="startgame()">Play</button>
+    <button class="download" onclick="downloadgame()">Download</button>
+    <button class="quit" onclick="quitgame()">Quit</button>
+  </center>
+  <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+  <script>
+    function fadeText(fade) {
+      $('#text').fadeOut(function() {
+        $(this).text(fade).fadeIn();
+      });
+    }
+    
+    function startgame() {
+      window.open("https://piggame.co.uk/data/demoversion", "_blank", "width=500,height=420");
+    }
+
+    function downloadgame() {
+      var popupbox = confirm("Sorry, downloads are currently unavailable. \nFor more info, head to the downloads page. \nWould you like to go to the downloads page now?");
+      if (popupbox) {
+        window.location.replace('https://www.piggame.co.uk/download');
+      } else {
+        // continue
+      }
+    }
+    
+    function quitgame() {
+      window.location.replace('https://www.piggame.co.uk/about');
+    }
+  </script>
+</body>
+</html>
