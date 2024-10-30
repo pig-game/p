@@ -4,7 +4,7 @@
   <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script type="text/javascript">
     (function() {
-      emailjs.init("5__Vt9NAjnXXLaXiN");
+      emailjs.init('YOUR_PUBLIC_KEY'); // Make sure this is your actual public key
     })();
   </script>
 </head>
@@ -15,7 +15,7 @@
     <textarea id="message" placeholder="Message" required></textarea>
     <button type="submit">Send Email</button>
   </form>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
   <script>
     document.getElementById('emailForm').addEventListener('submit', function(event) {
       event.preventDefault();
