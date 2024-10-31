@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script type="text/javascript">
+    (function() {
+      emailjs.init("5__Vt9NAjnXXLaXiN");
+    })();
+
+    function generateCode() {
+      return Math.floor(100000 + Math.random() * 900000); // Generates a 6-digit code
+    }
+
+    function sendVerificationCode(email, code) {
+      const templateParams = {
+        to_email: email,
+        subject1: 'Verify Email',
+        subject2: 'Here is your verification code to download Pig Game',
+        message: 'CODE: ' + code + '\n If you did not expect this email, you have only recieved it because someone typed in your email on the Pig Game website.
+      };
+
+      emailjs.send('service_ccbwxyk', 'template_339qh0s', templateParams)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+        }, function(error) {
+          console.log('FAILED...', error);
+        });
+    }
+  </script>
+</head>
+<body>
+  <form id="downloadForm">
+    <input type="email" id="email" placeholder="Your Email" required>
+    <button type="submit">Send Verification Code</button>
+  </form>
+
+  <div id="verificationSection" style="display:none;">
+    <input type="text" id="verificationCode" placeholder="Enter Verification Code" required>
+    <button id="verifyButton">Verify Code</button>
+  </div>
+
+  <button id="downloadButton" style="display:none;">Download File</button>
+
+  <script>
+    document.getElementById('downloadForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const verificationCode = generateCode();
+      sessionStorage.setItem('verificationCode', verificationCode);
+      sessionStorage.setItem('email', email);
+
+      sendVerificationCode(email, verificationCode);
+      document.getElementById('verificationSection').style.display = 'block';
+    });
+
+    document.getElementById('verifyButton').addEventListener('click', function() {
+      const enteredCode = document.getElementById('verificationCode').value;
+      const storedCode = sessionStorage.getItem('verificationCode');
+      const email = sessionStorage.getItem('email');
+
+      if (enteredCode === storedCode) {
+        sessionStorage.setItem(email + '_verified', 'true');
+        alert('Verification successful! You can now download the file.');
+        document.getElementById('downloadButton').style.display = 'block';
+      } else {
+        alert('Invalid verification code. Please try again.');
+      }
+    });
+
+    document.getElementById('downloadButton').addEventListener('click', function() {
+      const email = sessionStorage.getItem('email');
+
+      if (sessionStorage.getItem(email + '_verified') === 'true') {
+        window.location.href = 'https://your-site.com/download/file.zip'; // Link to the file
+      } else {
+        alert('Please verify your email first.');
+      }
+    });
+  </script>
+</body>
+</html>
