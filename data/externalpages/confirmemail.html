@@ -63,6 +63,16 @@
     let heading = document.getElementById('mainHeading');
     const urlParams = new URLSearchParams(window.location.search);
     const from = urlParams.get('from');
+    let m = localStorage.getItem('useremail');
+    if (m == null) {
+     //continue
+    } else {
+     let cbox = confirm('You are already logged in as ' + m + '\nDo you want to change your login email?');
+     if (cbox == true) {
+      localStorage.removeItem('useremail');
+     } else {
+      window.location.replace('https://www.piggame.co.uk');
+     }
     if (from == 'option') {
       heading.innerHTML = 'To gain access to all features of the Pig Game website, please fill out this form.';
     } else if (from == 'downloadpg') {
@@ -93,7 +103,6 @@
         sessionStorage.setItem(email + '_verified', 'true');
         heading.innerHTML = 'Correct verification code.';
         // Set an item
-        localStorage.setItem('useremail', email);
         document.getElementById('downloadButton').style.display = 'block';
       } else {
         heading.innerHTML = 'Invalid verification code. Please try again.';
@@ -104,6 +113,7 @@
       const email = sessionStorage.getItem('email');
 
       if (sessionStorage.getItem(email + '_verified') === 'true') {
+        localStorage.setItem('useremail', email);
         heading.innerHTML = 'Your email has been saved';
       } else {
         heading.innerHTML = 'Please verify your email first.';
