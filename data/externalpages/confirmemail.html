@@ -71,7 +71,7 @@
   <script>
     let heading = document.getElementById('mainHeading');
     const urlParams = new URLSearchParams(window.location.search);
-    const gkf = urlParams.get('from');
+    const from = urlParams.get('from');
     if (from == 'option') {
       heading.innerHTML = 'To gain access to all features of the Pig Game website, please fill out this form.';
     } else if (from == 'downloadpg') {
