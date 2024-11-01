@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
  <head>
-  <title>Download Pig Game</title>
+  <title>Pig Game - Confirm email</title>
   <link type="text/css" rel="stylesheet" href="https://www.piggame.co.uk/data/css/csspg.css"/>
   <meta charset="uft-8">
   <meta name="theme-color" content="pink">
@@ -47,7 +47,6 @@
    </nav>
   </header>
   <center>
-   <h1>Please Confirm your email</h1>
    <p id="mainHeading"></p>
    <form id="downloadForm">
     <input type="email" id="email" placeholder="Your Email" required>
@@ -81,6 +80,7 @@
       sessionStorage.setItem('email', email);
 
       sendVerificationCode(email, verificationCode);
+      heading.innerHTML = 'A verification code has been sent to' + email + '.';
       document.getElementById('verificationSection').style.display = 'block';
     });
 
@@ -91,12 +91,12 @@
 
       if (enteredCode === storedCode) {
         sessionStorage.setItem(email + '_verified', 'true');
-        alert('Verification successful!');
+        heading.innerHTML = 'Correct verification code.';
         // Set an item
         localStorage.setItem('useremail', email);
         document.getElementById('downloadButton').style.display = 'block';
       } else {
-        alert('Invalid verification code. Please try again.');
+        heading.innerHTML'Invalid verification code. Please try again.';
       }
     });
 
@@ -104,9 +104,9 @@
       const email = sessionStorage.getItem('email');
 
       if (sessionStorage.getItem(email + '_verified') === 'true') {
-        window.location.href = 'https://your-site.com/download/file.zip'; // Link to the file
+        heading.innerHTML = 'Your email has been saved';
       } else {
-        alert('Please verify your email first.');
+        heading.innerHTML = 'Please verify your email first.';
       }
     });
   </script>
