@@ -20,7 +20,7 @@
       const templateParams = {
         to_email: email,
         subject1: 'Verify Email',
-        subject2: 'Here is your verification code to download Pig Game',
+        subject2: 'Here is your email verification code.',
         message: 'CODE: ' + code + '\n If you did not expect this email, you have only recieved it because someone typed in your email on the Pig Game website.'
       };
 
@@ -93,7 +93,7 @@
         sessionStorage.setItem(email + '_verified', 'true');
         alert('Verification successful!');
         // Set an item
-        localStorage.setItem('emailconfirmed', 'true');
+        localStorage.setItem('useremail', email);
         document.getElementById('downloadButton').style.display = 'block';
       } else {
         alert('Invalid verification code. Please try again.');
