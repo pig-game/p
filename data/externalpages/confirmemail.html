@@ -58,16 +58,16 @@
     <button id="verifyButton">Verify Code</button>
    </div>
    <button id="downloadButton" style="display:none;">Confirm and Save email</button>
+   <form id="downloadForm">
+    <input type="email" id="email" placeholder="Your Email" required>
+    <button type="submit">Send Verification Code</button>
+   </form>
+   <div id="verificationSection" style="display:none;">
+    <input type="text" id="verificationCode" placeholder="Enter Verification Code" required>
+    <button id="verifyButton">Verify Code</button>
+   </div>
+   <button id="downloadButton" style="display:none;">Confirm</button>
   </center>
-  <form id="downloadForm">
-   <input type="email" id="email" placeholder="Your Email" required>
-   <button type="submit">Send Verification Code</button>
-  </form>
-  <div id="verificationSection" style="display:none;">
-   <input type="text" id="verificationCode" placeholder="Enter Verification Code" required>
-   <button id="verifyButton">Verify Code</button>
-  </div>
-  <button id="downloadButton" style="display:none;">Confirm</button>
   <script>
     let heading = document.getElementById('mainHeading');
     const urlParams = new URLSearchParams(window.location.search);
