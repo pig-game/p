@@ -91,7 +91,9 @@
 
       if (enteredCode === storedCode) {
         sessionStorage.setItem(email + '_verified', 'true');
-        alert('Verification successful! You can now download the file.');
+        alert('Verification successful!');
+        // Set an item
+        localStorage.setItem('emailconfirmed', 'true');
         document.getElementById('downloadButton').style.display = 'block';
       } else {
         alert('Invalid verification code. Please try again.');
