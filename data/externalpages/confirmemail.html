@@ -71,7 +71,15 @@
      if (cbox == true) {
       localStorage.removeItem('useremail');
      } else {
-      window.location.replace('https://www.piggame.co.uk');
+      if (from == 'bpopup') {
+       window.loacation.replace('');
+      } else if (from == 'downloadpg') {
+       heading.innerHTML = 'To download Pig Game, please verify your email.';
+      } else if (from == 'gamesnips') {
+       heading.innerHTML = 'To view game sneak-peeks, please verify your email.';
+      } else {
+       heading.innerHTML = 'To gain access to the new features of the Pig Game website, please verify your email.';
+      }
      }
     }
     if (from == 'bpopup') {
