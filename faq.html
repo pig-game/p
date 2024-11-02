@@ -30,15 +30,11 @@
   <h2>Your question not on here?</h2>
   <p>If you have a question and the answer is not on here, you can fill out the form below and your question's answer will be put up on this page.</p>
   <p id="text">Loading...</p>
-  <a href="/data/externalpages/confirmemail?from=7RN37EKW8SJE28EHD73" style="display:none;" id="link" class="hl2">Verify my email</a>
   <script>
    let b = document.getElementById('text');
    let z = localStorage.getItem('useremail');
-   let x = document.getElementById('link');
    if (z == null) {
-    b.innerHTML = 'Sorry, this feature is only avalible if you verify your email.';
-    x.innerHTML = 'Verify my email';
-    x.style.display="block";
+    b.innerHTML = 'Sorry, this feature is only avalible if you <a href="/data/externalpages/confirmemail?from=faq" class="hl2">verify your email</a>.';
    } else {
     b.innerHTML = 'Sorry, this feature is unavalible.';
    }
