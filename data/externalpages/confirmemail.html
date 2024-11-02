@@ -74,12 +74,14 @@
       window.location.replace('https://www.piggame.co.uk');
      }
     }
-    if (from == 'option') {
-      heading.innerHTML = 'To gain access to all features of the Pig Game website, please fill out this form.';
+    if (from == 'bpopup') {
+      heading.innerHTML = 'To use the popup window editions of Pig Game, please verify your email.';
     } else if (from == 'downloadpg') {
-      heading.innerHTML = 'To download Pig Game, you need to type your email in the form below.';
+      heading.innerHTML = 'To download Pig Game, please verify your email.';
+    } else if (from == 'gamesnips') {
+      heading.innerHTML = 'To view game sneak-peeks, please verify your email.';
     } else {
-      heading.innerHTML = 'To gain access to all features of the Pig Game website, please fill out this form.';
+      heading.innerHTML = 'To gain access to the new features of the Pig Game website, please verify your email.';
     }
     //console.log(gkf); // Will log "023" if the URL is ?gkf=023
     document.getElementById('downloadForm').addEventListener('submit', function(event) {
