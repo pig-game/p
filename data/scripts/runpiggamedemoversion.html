@@ -69,5 +69,18 @@
     <button class="download" onclick="downloadgame()">Download</button>
     <button class="quit" onclick="quitgame()">Quit</button>
   </center>
+  <script>
+    let z = localStorage.getItem('useremail');
+    if (z == null) {
+      let x = confirm('You have not verified your email. \nThis page is only avalible if your email is verified. \nWould you like to verify your email now?');
+      if (x == true) {
+        window.location.replace('https://www.piggame.co.uk/data/externalpages/confirmemail?from=bpopup');
+      } else {
+        window.location.replace('https://www.piggame.co.uk');
+      }
+    } else {
+      //continue
+    }
+  </script>
 </body>
 </html>
