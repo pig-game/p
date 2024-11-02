@@ -26,10 +26,22 @@
    <h1>News</h1>
    <p>We are adding some new features to our website, though they are only accessible if you <a href="/data/externalpages/confirmemail?from=homepg" class="hl2">verify your email</a>.</p>
    <p>These features include:</p>
-   <strong>• <a href="/data/externalpages/confirmemail?from=bpopup" class="hl2">Game in browser popup window</a></strong>
+   <strong>• <a href="/data/externalpages/confirmemail?from=bpopup" class="hl2" id="l1">Game in browser popup window</a></strong>
    <p>We are trying to make our Pig Game browser editions as much like the real game as possible, so now they are in popup windows!</p>
-   <strong>• <a href="/data/externalpages/confirmemail?from=gamesnips" class="hl2">Game sneak-peeks</a></strong>
+   <strong>• <a href="/data/externalpages/confirmemail?from=gamesnips" class="hl2" id="l2">Game sneak-peeks</a></strong>
    <p>There might be little sneak-peeks about future versions and more!</p>
    <center><p class="green-info-text"><strong>AND MORE!</strong></p></center>
+  </article>
+  <script>
+   let link1 = document.getElementById('l1');
+   let link2 = document.getElementById('l2');
+   let email = localStorage.getItem('useremail');
+   if (email == null) {
+    link1.href = "/data/externalpages/confirmemail?from=bpopup"
+    link2.href = "/data/externalpages/confirmemail?from=gamesnips"
+   } else {
+    link1.href = "/data/scripts/runpiggamedemoversion"
+    link2.href = "about"
+  </script>
  </body>
 </html>
