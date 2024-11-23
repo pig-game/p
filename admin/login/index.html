@@ -59,11 +59,11 @@
   <body>
     <div class="login-container">
       <h1>Pig Game Admin Login</h1>
-      <form>
+      <form onsubmit="return login()">
         <input type="text" id="username" placeholder="Username" required>
         <input type="password" id="password" placeholder="Password" required>
         <h5 id="iscorrect"></h5>
-        <button type="submit" onclick="login()">Login</button>
+        <button type="submit">Login</button>
       </form>
     </div>
   </body>
