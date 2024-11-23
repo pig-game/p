@@ -17,7 +17,7 @@ function login() {
         if (data[username] === password) {
             text.innerHTML = 'Correct. Logging you on...';
             text.style.color = 'green';
-            window.location.href = 'https://www.piggame.co.uk/admin/login/loginservice.html?username=' + username + '&password=' + password;
+            window.location.replace('https://www.piggame.co.uk/admin/login/loginservice.html?username=' + username + '&password=' + password);
         } else {
             text.innerHTML = 'Incorrect username or password.';
             text.style.color = 'red';
