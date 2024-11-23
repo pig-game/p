@@ -5,9 +5,13 @@ var data = {
 };
 
 function login() {
+    console.log("Login function called"); // Debugging step
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
     var text = document.getElementById('iscorrect');
+
+    console.log("Username: " + username); // Debugging step
+    console.log("Password: " + password); // Debugging step
     
     if (username in data) {
         if (data[username] === password) {
