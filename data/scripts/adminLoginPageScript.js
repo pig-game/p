@@ -4,11 +4,10 @@ var data = {
     'DKennedy': 'JB393'
 };
 
-var text = document.getElementById('iscorrect');
-
 function login() {
     var username = document.getElementById('username').value;
     var password = document.getElementById('password').value;
+    var text = document.getElementById('iscorrect');
     
     if (username in data) {
         if (data[username] === password) {
