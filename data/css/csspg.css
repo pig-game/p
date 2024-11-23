@@ -1,60 +1,95 @@
 body {
-font-family: sans-serif;
-background-color:white;
+    font-family: sans-serif;
+    background-color: white;
+    margin: 0;
+    padding: 0;
 }
 nav ul li {
-display: inline;
-list-style-type: none;
+    display: inline;
+    list-style-type: none;
 }
 nav ul li a {
-text-decoration: none;
-color: black;
+    text-decoration: none;
+    color: black;
 }
 img.floatleft {
-float: left;
+    float: left;
+    max-width: 40%;
+    height: auto;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 nav ul li a:hover {
-background-color: aqua;
+    background-color: aqua;
 }
 nav li.selected {
-background-color: red;
+    background-color: red;
 }
 header {
-font-size: 30px;
-background-color: #ffb6c1;
+    font-size: 30px;
+    background-color: #ffb6c1;
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
 }
 a.hl1 {
-  text-decoration: none;
-  color:black;
+    text-decoration: none;
+    color: black;
 }
 a.hl1:hover {
-  text-decoration:underline;
+    text-decoration: underline;
 }
 a.hl2 {
-  color:black;
-  text-decoration:underline;
+    color: black;
+    text-decoration: underline;
 }
 a.hl2:hover {
-  color:black;
-  text-decoration:none;
+    color: black;
+    text-decoration: none;
 }
 img.acount-icon {
-  float:left;
-  width:25px;
-  height:25px;
+    float: left;
+    width: 25px;
+    height: 25px;
 }
 p.red-error-text {
-  color:red;
+    color: red;
 }
 p.green-info-text {
-  color:green;
+    color: green;
 }
 footer {
-   position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: #ffb6c1;
-   color: black;
-   text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffb6c1;
+    color: black;
+    text-align: center;
 }
+
+/* New styles for responsiveness */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+    img.floatleft {
+        float: none;
+        display: block;
+        margin: 0 auto 20px;
+        max-width: 80%;
+    }
+}
+@media (max-width: 480px) {
+    article {
+        padding: 10px;
+    }
+    header {
+        font-size: 24px;
+    }
+    nav ul li {
+        margin: 5px 0;
+    }
+}
+
