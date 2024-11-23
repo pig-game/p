@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Pig Game FAQ</title>
+  <link type="text/css" rel="stylesheet" href="data/css/csspg.css"/>
+  <meta charset="uft-8">
+  <meta name="theme-color" content="pink">
+  <meta name="title" content="Pig Game FAQ">
+ </head>
+ <body>
+  <header>
+   <h1>Pig Game FAQ</h1>
+   <nav>
+     <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="download">Download</a></li>
+      <li><a href="about">About</a></li>
+      <li class="selected">FAQ</li>
+     </ul>
+   </nav>
+  </header>
+  <h1>Welcome to the Pig Game FAQ</h1>
+  <p>Here, you can find the answers to all the Pig Game frequently asked questions. </p>
+  <br/>
+  <h3>How do I download Pig Game? </h2>
+  <p>To download Pig Game, please head over to the <a class="hl2" href="download">downloads page</a>. </p>
+  <br/>
+  <h3>When is Pig Game V1 out? </h2>
+  <p>We don't know for sure when Pig Game V1 will be released but we hope it will be by July. </p>
+  <h2>Your question not on here?</h2>
+  <p>If you have a question and the answer is not on here, you can fill out the form below and your question's answer will be put up on this page.</p>
+  <p id="text">Loading...</p>
+  <script>
+   let b = document.getElementById('text');
+   let z = localStorage.getItem('useremail');
+   if (z == null) {
+    b.innerHTML = 'Sorry, this feature is only avalible if you <a href="/data/externalpages/confirmemail?from=faq" class="hl2">verify your email</a>.';
+   } else {
+    b.innerHTML = 'Sorry, this feature is unavalible.';
+   }
+  </script>
+ </body>
+</html>
