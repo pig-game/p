@@ -10,7 +10,7 @@ document.write("Hey, " + urlusername + "! I'm still coding this part of the Admi
 var ca = sessionStorage.getItem('currentAccount'); var referrer = document.referrer;
 if (referrer == '') {
   window.location.replace('https://www.piggame.co.uk/admin/login?source=loginsericewrongurl');
-} else {
+} else if (referrer {
   if (ca == null) {
     sessionStorage.setItem('currentAccount', urlusername);
   } else {
@@ -19,4 +19,4 @@ if (referrer == '') {
 }
 
 //Head to admin home screen
-window.location.replace('https://www.piggame.co.uk/admin/#homescreen');
+window.location.replace('https://www.piggame.co.uk/admin/dashboard/home');
