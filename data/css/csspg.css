@@ -5,17 +5,22 @@ body {
     padding: 0;
 }
 nav ul li {
-    display: inline-block;
+    display: inline;
     list-style-type: none;
 }
 nav ul li a {
     text-decoration: none;
     color: black;
-    padding: 10px 20px;
+}
+img.floatleft {
+    float: left;
+    max-width: 40%;
+    height: auto;
+    margin-right: 20px;
+    margin-bottom: 20px;
 }
 nav ul li a:hover {
     background-color: aqua;
-    width: auto; /* Ensure only the text is highlighted */
 }
 nav li.selected {
     background-color: red;
@@ -63,26 +68,27 @@ footer {
     text-align: center;
 }
 
-/* New styles for responsiveness, specifically for portrait mode on mobile phones */
-@media (max-width: 480px) and (orientation: portrait) {
+/* New styles for responsiveness */
+@media (max-width: 768px) {
     nav ul li {
         display: block;
-        margin: 5px 0;
-        width: 100%; /* Ensure full-width highlight */
-    }
-    nav ul li a {
-        display: block;
-        padding: 15px;
-        width: 100%; /* Ensure full-width highlight */
-    }
-    nav ul li a:hover {
-        background-color: aqua;
-        width: 100%; /* Highlight the full width */
+        margin: 10px 0;
     }
     img.floatleft {
         float: none;
         display: block;
         margin: 0 auto 20px;
         max-width: 80%;
+    }
+}
+@media (max-width: 480px) {
+    article {
+        padding: 10px;
+    }
+    header {
+        font-size: 24px;
+    }
+    nav ul li {
+        margin: 5px 0;
     }
 }
