@@ -9,60 +9,16 @@
         display: inline
       }
     </style>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script type="text/javascript">
-      (function() {
-        emailjs.init('5__Vt9NAjnXXLaXiN'); // Make sure this is your actual public key
-      })();
-    </script>
   </head>
-  <script>
-    function yes() {
-
-      var Params = {
-        to_email: 'odhran.vermunt@gmail.com',
-        subject: 'Can come to R Jam?;,
-        from_website: window.location.href,
-        message: document.getElementById('name').value + ' can come to the next Raspberry Jam.',
-      };
-
-      emailjs.send('service_ccbwxyk', 'template_8kj0sn8', Params)
-        .then(function(response) {
-          console.info('SUCCESS!', response.status, response.text);
-        }, function(error) {
-          console.log('FAILED...', error);
-        });
-    });
-    function no() {
-
-      var Params = {
-        to_email: 'odhran.vermunt@gmail.com',
-        subject: 'Can come to R Jam?;,
-        from_website: window.location.href,
-        message: document.getElementById('name').value + ' can't come to the next Raspberry Jam.',
-      };
-
-      emailjs.send('service_ccbwxyk', 'template_8kj0sn8', Params)
-        .then(function(response) {
-          console.info('SUCCESS!', response.status, response.text);
-        }, function(error) {
-          console.log('FAILED...', error);
-        });
-    });
-  </script>
   <body>
     <center>
       <h1>Random Stuff...</h1>
       <p><strong><u>Sorry that the Admin site is a mess at the moment, I'm still coding it. In the options below, please fill in if your parents have let you go to Raspberry Jam (the coding club that I gave you notes to take home for.</u></strong></p>
       <h2>Please fill this in...</h2>
-      <h3>Are you able to go to the next Raspberry Jam (coding club)?</h3>
-      <div class="css-div-class-display-inline">
-        <p>My name is: </p>
-        <input type="text" id="name" placeholder="Your name" required>
-      </div>
-      <p>Can you come to the next Raspberry Jam (coding club)?</p>
-      <button onclick="yes()">Yes!</button>
-      <button onclick="no()">Sorry, no.</button>
+      <p>Ok change of plan, just email <a href="mailto:odhran.vermunt@gmail.com">me</a> if you can come.</p>
+      <p>Thanks,</p>
+      <p>Odhran Vermunt</p>
+      <p>Pig Game CEO</p>
     </center>
   </body>
 </html>
