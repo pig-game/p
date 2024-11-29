@@ -5,15 +5,64 @@
       body {
         font-family: comic-sans-ms;
       }
+      div.css-div-class-display-inline {
+        display: inline
+      }
     </style>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+      (function() {
+        emailjs.init('5__Vt9NAjnXXLaXiN'); // Make sure this is your actual public key
+      })();
+    </script>
   </head>
   <body>
     <center>
-      <h1>COMING SOON</h1>
-      <p>Sorryy, I have only got this far so far with the Admin page, and I am still coding this page.</p>
-      <h2>This page should start changing around 15:45 on Friday 29th November 2024 (tommorow). It mightn't be ready until Friday evening/Saturday/Sunday.</h2>
-      <h2>Thank you for your understanding.</h2>
-      <h2>Meanwhile, check out the <a href="https://www.piggame.co.uk">Main Pig Game Website</h2>
+      <h1>Random Stuff...</h1>
+      <p><strong><u>Sorry that the Admin site is a mess at the moment, I'm still coding it. In the options below, please fill in if your parents have let you go to Raspberry Jam (the coding club that I gave you notes to take home for.</u></strong></p>
+      <h2>Please fill this in...</h2>
+      <h3>Are you able to go to the next Raspberry Jam (coding club)?</h3>
+      <div class="css-div-class-display-inline">
+        <p>My name is: </p>
+        <input type="text" id="name" placeholder="Your name" required>
+      </div>
+      <p>Can you come to the next Raspberry Jam (coding club)?</p>
+      <button onclick="yes()">Yes!</button>
+      <button onclick="no()">Sorry, no.</button>
     </center>
   </body>
+  <script>
+    function yes() {
+
+      var Params = {
+        to_email: 'odhran.vermunt@gmail.com',
+        subject: 'Can come to R Jam?;,
+        from_website: window.location.href,
+        message: document.getElementById('name').value + ' can come to the next Raspberry Jam.',
+      };
+
+      emailjs.send('service_ccbwxyk', 'template_8kj0sn8', Params)
+        .then(function(response) {
+          console.info('SUCCESS!', response.status, response.text);
+        }, function(error) {
+          console.log('FAILED...', error);
+        });
+    });
+    function no() {
+
+      var Params = {
+        to_email: 'odhran.vermunt@gmail.com',
+        subject: 'Can come to R Jam?;,
+        from_website: window.location.href,
+        message: document.getElementById('name').value + ' can't come to the next Raspberry Jam.',
+      };
+
+      emailjs.send('service_ccbwxyk', 'template_8kj0sn8', Params)
+        .then(function(response) {
+          console.info('SUCCESS!', response.status, response.text);
+        }, function(error) {
+          console.log('FAILED...', error);
+        });
+    });
+  </script>
 </html>
