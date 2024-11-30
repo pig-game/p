@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Chat</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        .chat-box { width: 300px; border: 1px solid #ccc; padding: 10px; }
+        .messages { height: 200px; overflow-y: scroll; border-bottom: 1px solid #ccc; }
+        .input-group { display: flex; margin-top: 10px; }
+        .input-group input { flex: 1; padding: 5px; }
+        .input-group button { padding: 5px 10px; }
+    </style>
+</head>
+<body>
+    <div class="chat-box">
+        <div class="messages" id="messages"></div>
+        <div class="input-group">
+            <input type="text" id="message-input" placeholder="Type a message">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <!-- Include Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+          apiKey: "AIzaSyCHIQ8HB8SDDXkorxfufFCvJyQQ-a3AsZ4",
+          authDomain: "pig-game-admin-text-chat.firebaseapp.com",
+          projectId: "pig-game-admin-text-chat",
+          storageBucket: "pig-game-admin-text-chat.firebasestorage.app",
+          messagingSenderId: "591073526053",
+          appId: "1:591073526053:web:19a3c8c576b0462f935acc"
+        };
+
+
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+
+        const db = firebase.database();
+
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+            if (message) {
+                db.ref('messages').push({
+                    message: message,
+                    timestamp: Date.now()
+                });
+                input.value = '';
+            }
+        }
+
+        db.ref('messages').on('child_added', function(snapshot) {
+            const messagesContainer = document.getElementById('messages');
+            const messageElement = document.createElement('div');
+            messageElement.textContent = snapshot.val().message;
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        });
+    </script>
+  </body>
+</html>
