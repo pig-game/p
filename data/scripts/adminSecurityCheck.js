@@ -3,7 +3,7 @@ console.info('gggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
 var ca = sessionStorage.getItem('currentAccount'); var referrer = document.referrer;
 if (referrer == '') {
   window.location.replace('https://www.piggame.co.uk/admin/login?source=loginsericewrongurl');
-} else if (referrer {
+} else if (referrer) {
   if (ca == null) {
     //continue
   } else {
