@@ -70,10 +70,27 @@
         background-color: #f1f1f1;
         word-wrap: break-word;
       }
+      nav ul li.selected {
+        text-decoration: underline;
+      }
+      nav ul li a {
+        color: black;
+      }
+      nav ul li a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
-
+    <header>
+      <h1>Pig Game Admin</h1>
+      <nav>
+        <ul>
+          <li><a href="home">Home</a></li>
+          <li class="selected">Text Chat</li>
+        </ul>
+      </nav>
+    </header>
     <div id="chat-container">
       <h2>Pig Game Admin Text chat</h2>
       <div id="messages"></div>
@@ -112,7 +129,7 @@
         const message = messageInput.value;
         if (message !== '') {
           messagesRef.push({
-            name: 'You', // Replace with user name
+            name: sessionStorage.getItem('currentAccount'), // Replace with user name
             text: message
           });
           messageInput.value = '';
