@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Real-Time Chat</title>
+    <title>Simple Chat</title>
     <style>
         body { font-family: Arial, sans-serif; }
         .chat-box { width: 300px; border: 1px solid #ccc; padding: 10px; }
@@ -12,6 +12,9 @@
         .input-group input { flex: 1; padding: 5px; }
         .input-group button { padding: 5px 10px; }
     </style>
+    <!-- Include Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
 </head>
 <body>
     <div class="chat-box">
@@ -22,21 +25,17 @@
         </div>
     </div>
 
-    <!-- Include Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
     <script>
         // Your web app's Firebase configuration
-        const firebaseConfig = {
-          apiKey: "AIzaSyCHIQ8HB8SDDXkorxfufFCvJyQQ-a3AsZ4",
-          authDomain: "pig-game-admin-text-chat.firebaseapp.com",
-          projectId: "pig-game-admin-text-chat",
-          storageBucket: "pig-game-admin-text-chat.firebasestorage.app",
-          messagingSenderId: "591073526053",
-          appId: "1:591073526053:web:19a3c8c576b0462f935acc"
+        var firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            databaseURL: "YOUR_DATABASE_URL",
+            projectId: "pig-game-admin-text-chat", // Your Project ID
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
         };
-
-
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
 
