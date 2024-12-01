@@ -1,65 +1,86 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Chat</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        .chat-box { width: 300px; border: 1px solid #ccc; padding: 10px; }
-        .messages { height: 200px; overflow-y: scroll; border-bottom: 1px solid #ccc; }
-        .input-group { display: flex; margin-top: 10px; }
-        .input-group input { flex: 1; padding: 5px; }
-        .input-group button { padding: 5px 10px; }
-    </style>
-    <!-- Include Firebase -->
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+  <title>Firebase Text Chat</title>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+    #chat-container {
+      width: 400px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    #messages {
+      height: 300px;
+      overflow-y: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+    #message-input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    #send-button {
+      padding: 10px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-    <div class="chat-box">
-        <div class="messages" id="messages"></div>
-        <div class="input-group">
-            <input type="text" id="message-input" placeholder="Type a message">
-            <button onclick="sendMessage()">Send</button>
-        </div>
-    </div>
 
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_AUTH_DOMAIN",
-            databaseURL: "YOUR_DATABASE_URL",
-            projectId: "pig-game-admin-text-chat", // Your Project ID
-            storageBucket: "YOUR_STORAGE_BUCKET",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
+  <div id="chat-container">
+    <h2>Firebase Text Chat</h2>
+    <div id="messages"></div>
+    <input type="text" id="message-input" placeholder="Type your message...">
+    <button id="send-button">Send</button>
+  </div>
 
-        const db = firebase.database();
+  <script>
+    // Replace with your Firebase configuration
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      databaseURL: "YOUR_DATABASE_URL",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
 
-        function sendMessage() {
-            const input = document.getElementById('message-input');
-            const message = input.value.trim();
-            if (message) {
-                db.ref('messages').push({
-                    message: message,
-                    timestamp: Date.now()
-                });
-                input.value = '';
-            }
-        }
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const database = firebase.database();
+    const messagesRef = database.ref('messages');
 
-        db.ref('messages').on('child_added', function(snapshot) {
-            const messagesContainer = document.getElementById('messages');
-            const messageElement = document.createElement('div');
-            messageElement.textContent = snapshot.val().message;
-            messagesContainer.appendChild(messageElement);
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+    // Display messages
+    messagesRef.on('child_added', (snapshot) => {
+      const message = snapshot.val();
+      const messageElement = document.createElement('p');
+      messageElement.textContent = `${message.name}: ${message.text}`;
+      document.getElementById('messages').appendChild(messageElement);
+    });
+
+    // Send message
+    document.getElementById('send-button').addEventListener('click', () => {
+      const messageInput = document.getElementById('message-input');
+      const message = messageInput.value;
+      if (message !== '') {
+        messagesRef.push({
+          name: 'You', // Replace with user name
+          text: message
         });
-    </script>
-  </body>
+        messageInput.value = '';
+      }
+    });
+  </script>
+
+</body>
 </html>
