@@ -13,13 +13,27 @@
         background-color: grey;
         font-family: Sans-Serif;
       }
+      nav ul li.selected {
+        text-decoration: underline;
+      }
+      nav ul li a {
+        color: black;
+      }
+      nav ul li a:hover {
+        text-decoration: underline;
+      }
     </style>
   </head>
   <body>
     <center>
       <header>
         <h1>Pig Game Admin</h1>
-        <u>Home</u>
+        <nav>
+          <ul>
+            <li class="selected">Home</li>
+            <li><a href="text-chat">Text Chat</a></li>
+          </ul>
+        </nav>
       </header>
       <article>
         <h1>Random Stuff...</h1>
