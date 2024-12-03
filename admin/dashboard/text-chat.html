@@ -99,6 +99,9 @@
     </div>
 
     <script>
+      window.onload = function() {
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      };
       // Replace with your Firebase configuration
       const firebaseConfig = {
         apiKey: "AIzaSyCHIQ8HB8SDDXkorxfufFCvJyQQ-a3AsZ4",
