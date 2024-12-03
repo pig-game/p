@@ -121,6 +121,7 @@
         messageElement.classList.add('message');
         messageElement.textContent = `${message.name}: ${message.text}`;
         document.getElementById('messages').appendChild(messageElement);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
       });
 
       // Send message
