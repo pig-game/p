@@ -123,7 +123,7 @@
         const messageElement = document.createElement('div');
         messageElement.classList.add('message');
         if (message.name == 'blogpost') {
-          messageElement.style = 'color:yellow;';
+          messageElement.style = 'background-color:yellow; text-align: center;';
           messageElement.textContent = `${message.text}`;
         } else
         messageElement.textContent = `${message.name}: ${message.text}`;
