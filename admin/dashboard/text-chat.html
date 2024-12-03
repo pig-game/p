@@ -122,6 +122,10 @@
         const message = snapshot.val();
         const messageElement = document.createElement('div');
         messageElement.classList.add('message');
+        if (message.name == 'blogpost') {
+          messageElement.style = 'color:yellow;';
+          messageElement.textContent = `${message.text}`;
+        } else
         messageElement.textContent = `${message.name}: ${message.text}`;
         document.getElementById('messages').appendChild(messageElement);
         document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
