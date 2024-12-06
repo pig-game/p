@@ -12,12 +12,12 @@
     <center>
       <h1>Something went wrong</h1>
       <p id="text"/>
-      <button onclick="changeURL()" id="button">
+      <button onclick="changeURL()" id="url-change-button">
     </center>
   </body>
   <script>
     document.getElementById('text').innerHTML = sessionStorage.getItem('errorText');
-    document.getElementById('button').innerHTML = sessionStorage.getItem('buttonText');
+    document.getElementById('url-change-button').innerHTML = sessionStorage.getItem('buttonText');
     function changeURL() {
       window.location.replace(sessionStorage.getItem('buttonSite'));
     }
