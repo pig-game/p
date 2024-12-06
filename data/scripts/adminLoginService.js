@@ -13,9 +13,16 @@ var data = {
     'DKennedy': 'JB393',
     'OVermunt': 'HE734FHG67'
 };
+var ranks = {
+    'VBurden': 'basic',
+    'TGreen': 'senior',
+    'DKennedy': 'senior',
+    'OVermunt': 'full'
+};
 if (username in data) {
     if (data[username] === password) {
         sessionStorage.setItem('currentAccount', username);
+        sessionStorage.setItem('userRank', ranks[username]);
     } else {
         window.location.replace('https://www.piggame.co.uk/admin/login');
     }
