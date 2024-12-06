@@ -37,13 +37,21 @@
       </header>
       <article>
         <h1>Random Stuff...</h1>
-        <p><strong><u>Sorry that the Admin site is a mess at the moment, I'm still coding it. In the options below, please fill in if your parents have let you go to Raspberry Jam (the coding club that I gave you notes to take home for.</u></strong></p>
-        <h2>Please fill this in...</h2>
-        <p>Ok change of plan, just email <a href="mailto:odhran.vermunt@gmail.com">me here</a> if you can come.</p>
-        <p>Thanks,</p>
-        <p>Odhran Vermunt</p>
-        <p>Pig Game CEO</p>
+        <p>Hi guys! I'm still coding this Admin site, but the text chat works! I'll still need to code some stuff though.</p>
+        <h2>Admin rank checker</h2>
+        <p>Your Admin rank is:</p>
+        <p id="admin-rank-checker-text-1">Please wait.</p>
+        <p id="admin-rank-checker-text-2">Checking your Admin rank...</p>
       </article>
     </center>
   </body>
+  <script>
+    var z = document.getElementById('admin-rank-checker-text-1');
+    var y = document.getElementById('admin-rank-checker-text-1');
+    var x = sessionStorage.getItem('currentAccount');
+    if (x == null) || (z == null) {
+      sessionStorage.setItem('errorText', 'Your account data was not right. This could be caused by going to the Admin Home Page without going through the login page. Otherwise, this is probably just a rare error. If this happens again, please contact <a href="odhran.vermunt@gmail.com">Odhran Vermunt</a>.');
+      sessionStorage.setItem('buttonText', 'Click here to continue');
+      window.location.replace('https://www.piggame.co.uk/admin/error');
+  </script>
 </html>
