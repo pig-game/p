@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Chat - Pig Game Admin</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+      }
+      #chat-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      #chat-container h2 {
+        background-color: #4CAF50;
+        color: white;
+        margin: 0;
+        padding: 15px;
+        text-align: center;
+      }
+      #messages {
+        height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+      #message-input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      #send-button {
+        display: block;
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      #send-button:hover {
+        background-color: #45a049;
+      }
+      .message {
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #f1f1f1;
+        word-wrap: break-word;
+      }
+      header {
+        background-color: grey;
+      }
+      nav ul li.selected {
+        text-decoration: underline;
+      }
+      nav ul li a {
+        color: black;
+      }
+      nav ul li a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Pig Game Admin</h1>
+      <nav>
+        <ul>
+          <li><a href="home">Home</a></li>
+          <li class="selected">Text Chat</li>
+        </ul>
+      </nav>
+    </header>
+    <iframe src="iframe"></iframe>
+  </body>
+</html>
