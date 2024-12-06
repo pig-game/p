@@ -9,18 +9,41 @@
     <style>
       body {
         font-family: 'Arial', sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
         background-color: #f5f5f5;
         margin: 0;
-        padding: 20px;
+      }
+      header {
+        font-size: 30px;
+        background-color: grey;
+        font-family: 'Sans-Serif';
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+      nav ul li {
+        margin: 0 10px;
+      }
+      nav ul li.selected {
+        text-decoration: underline;
+      }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+      }
+      nav ul li a:hover {
+        text-decoration: underline;
       }
       #chat-container {
         width: 100%;
         max-width: 600px;
-        margin: 0 auto;
+        margin: 20px auto;
         border-radius: 8px;
         background-color: white;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -70,18 +93,6 @@
         background-color: #f1f1f1;
         word-wrap: break-word;
       }
-      header {
-        background-color: grey;
-      }
-      nav ul li.selected {
-        text-decoration: underline;
-      }
-      nav ul li a {
-        color: black;
-      }
-      nav ul li a:hover {
-        text-decoration: underline;
-      }
     </style>
   </head>
   <body>
@@ -89,11 +100,64 @@
       <h1>Pig Game Admin</h1>
       <nav>
         <ul>
-          <li><a href="home">Home</a></li>
-          <li class="selected">Text Chat</li>
+          <li class="selected">Home</li>
+          <li><a href="text-chat">Text Chat</a></li>
         </ul>
       </nav>
     </header>
-    <iframe src="iframe"></iframe>
+    <div id="chat-container">
+      <h2>Pig Game Admin Text Chat</h2>
+      <div id="messages"></div>
+      <input type="text" id="message-input" placeholder="Type your message...">
+      <button id="send-button">Send</button>
+    </div>
+
+    <script>
+      window.onload = function() {
+        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+      };
+      // Replace with your Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCHIQ8HB8SDDXkorxfufFCvJyQQ-a3AsZ4",
+        authDomain: "pig-game-admin-text-chat.firebaseapp.com",
+        databaseURL: "https://pig-game-admin-text-chat-default-rtdb.firebaseio.com",
+        projectId: "pig-game-admin-text-chat",
+        storageBucket: "pig-game-admin-text-chat.firebasestorage.app",
+        messagingSenderId: "591073526053",
+        appId: "1:591073526053:web:19a3c8c576b0462f935acc"
+      };
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+      const messagesRef = database.ref('messages');
+
+      // Display messages
+      messagesRef.on('child_added', (snapshot) => {
+        const message = snapshot.val();
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        if (message.name == 'blogpost') {
+          messageElement.style = 'background-color:yellow; text-align: center;';
+          messageElement.textContent = `${message.text}`;
+        } else
+        messageElement.textContent = `${message.name}: ${message.text}`;
+        document.getElementById('messages').appendChild(messageElement);
+        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+      });
+
+      // Send message
+      document.getElementById('send-button').addEventListener('click', () => {
+        const messageInput = document.getElementById('message-input');
+        const message = messageInput.value;
+        if (message !== '') {
+          messagesRef.push({
+            name: sessionStorage.getItem('currentAccount'), // Replace with user name
+            text: message
+          });
+          messageInput.value = '';
+        }
+      });
+    </script>
+    
   </body>
 </html>
