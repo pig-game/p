@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Chat - Pig Game Admin</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+        margin: 0;
+        padding: 20px;
+      }
+      #chat-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        border-radius: 8px;
+        background-color: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+      }
+      #chat-container h2 {
+        background-color: #4CAF50;
+        color: white;
+        margin: 0;
+        padding: 15px;
+        text-align: center;
+      }
+      #messages {
+        height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+        border-bottom: 1px solid #ccc;
+      }
+      #message-input {
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+      #send-button {
+        display: block;
+        width: calc(100% - 22px);
+        padding: 10px;
+        margin: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        box-sizing: border-box;
+        text-align: center;
+      }
+      #send-button:hover {
+        background-color: #45a049;
+      }
+      .message {
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 4px;
+        background-color: #f1f1f1;
+        word-wrap: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chat-container">
+      <h2>Pig Game Admin Text chat</h2>
+      <div id="messages"></div>
+      <input type="text" id="message-input" placeholder="Type your message...">
+      <button id="send-button">Send</button>
+    </div>
+
+    <script>
+      window.onload = function() {
+        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+      };
+      // Replace with your Firebase configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyCHIQ8HB8SDDXkorxfufFCvJyQQ-a3AsZ4",
+        authDomain: "pig-game-admin-text-chat.firebaseapp.com",
+        databaseURL: "https://pig-game-admin-text-chat-default-rtdb.firebaseio.com",
+        projectId: "pig-game-admin-text-chat",
+        storageBucket: "pig-game-admin-text-chat.firebasestorage.app",
+        messagingSenderId: "591073526053",
+        appId: "1:591073526053:web:19a3c8c576b0462f935acc"
+      };
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+      const messagesRef = database.ref('messages');
+
+      // Display messages
+      messagesRef.on('child_added', (snapshot) => {
+        const message = snapshot.val();
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        if (message.name == 'blogpost') {
+          messageElement.style = 'background-color:yellow; text-align: center;';
+          messageElement.textContent = `${message.text}`;
+        } else {
+        messageElement.textContent = `${message.name}: ${message.text}`;
+        document.getElementById('messages').appendChild(messageElement);
+        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+      });
+
+      // Send message
+      document.getElementById('send-button').addEventListener('click', () => {
+        const messageInput = document.getElementById('message-input');
+        const message = messageInput.value;
+        if (message !== '') {
+          messagesRef.push({
+            name: sessionStorage.getItem('currentAccount'), // Replace with user name
+            text: message
+          });
+          messageInput.value = '';
+        }
+      });
+    </script>
+    
+  </body>
+</html>
