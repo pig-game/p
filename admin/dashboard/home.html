@@ -1,67 +1,96 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home - Pig Game Admin</title>
     <style>
-      article {
-        font-family: Comic Sans MS;
-      }
-      div.css-div-class-display-inline {
-        display: inline;
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f5f5f5;
+        margin: 0;
       }
       header {
         font-size: 30px;
         background-color: grey;
-        font-family: Sans-Serif;
+        font-family: 'Arial', sans-serif;
+        color: white;
+        padding: 10px;
+        text-align: center;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+      nav ul li {
+        margin: 0 10px;
       }
       nav ul li.selected {
         text-decoration: underline;
       }
       nav ul li a {
-        color: black;
+        color: white;
+        text-decoration: none;
       }
       nav ul li a:hover {
         text-decoration: underline;
       }
-      div.container {}
+      article {
+        font-family: 'Comic Sans MS', sans-serif;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      .container {
+        margin-top: 20px;
+      }
+      .container-heading {
+        margin-top: 0;
+      }
     </style>
   </head>
   <body>
-    <center>
-      <header>
-        <h1>Pig Game Admin</h1>
-        <nav>
-          <ul>
-            <li class="selected">Home</li>
-            <li><a href="text-chat">Text Chat</a></li>
-          </ul>
-        </nav>
-      </header>
-      <article>
-        <h1>Random Stuff...</h1>
-        <p>Hi guys! I'm still coding this Admin site, but the text chat works! I'll still need to code some stuff though.</p>
-        <div class="container" id="rankchecker">
-          <h2 class="container-heading">Admin rank checker</h2>
-          <p>Your Admin rank is:</p>
-          <p id="admin-rank-checker-text-1">Please wait.</p>
-          <p id="admin-rank-checker-text-2">Checking your Admin rank...</p>
-          <p>To ask if you can have your rank changed, message Odhran Vermunt on the <a href="text-chat">Text Chat</a>.</p>
-        </div>
-      </article>
-    </center>
+    <header>
+      <h1>Pig Game Admin</h1>
+      <nav>
+        <ul>
+          <li class="selected">Home</li>
+          <li><a href="text-chat">Text Chat</a></li>
+        </ul>
+      </nav>
+    </header>
+    <article>
+      <h1>Random Stuff...</h1>
+      <p>Hi guys! I'm still coding this Admin site, but the text chat works! I'll still need to code some stuff though.</p>
+      <div class="container" id="rankchecker">
+        <h2 class="container-heading">Admin rank checker</h2>
+        <p>Your Admin rank is:</p>
+        <p id="admin-rank-checker-text-1">Please wait.</p>
+        <p id="admin-rank-checker-text-2">Checking your Admin rank...</p>
+        <p>To ask if you can have your rank changed, message Odhran Vermunt on the <a href="text-chat">Text Chat</a>.</p>
+      </div>
+    </article>
+    
+    <script>
+      var w = document.getElementById('admin-rank-checker-text-1');
+      var x = document.getElementById('admin-rank-checker-text-2');
+      var y = sessionStorage.getItem('currentAccount');
+      var z = sessionStorage.getItem('userRank');
+      if ((x == null) || (z == null)) {
+        sessionStorage.setItem('errorText', 'Your account data was not right. This could be caused by going to the Admin Home Page without going through the login page. Otherwise, this is probably just a rare error. If this happens again, please contact <a href="odhran.vermunt@gmail.com">Odhran Vermunt</a>.');
+        sessionStorage.setItem('buttonText', 'Click here to continue');
+        sessionStorage.setItem('buttonSite', 'https://www.piggame.co.uk/admin/login');
+        window.location.replace('https://www.piggame.co.uk/admin/error');
+      } else {
+        w.innerText = 'Username: ' + y;
+        x.innerText = 'Rank: ' + z + ' Admin';
+      }
+    </script>
   </body>
-  <script>
-    var w = document.getElementById('admin-rank-checker-text-1');
-    var x = document.getElementById('admin-rank-checker-text-2');
-    var y = sessionStorage.getItem('currentAccount');
-    var z = sessionStorage.getItem('userRank');
-    if ((x == null) || (z == null)) {
-      sessionStorage.setItem('errorText', 'Your account data was not right. This could be caused by going to the Admin Home Page without going through the login page. Otherwise, this is probably just a rare error. If this happens again, please contact <a href="odhran.vermunt@gmail.com">Odhran Vermunt</a>.');
-      sessionStorage.setItem('buttonText', 'Click here to continue');
-      sessionStorage.setItem('buttonSite', 'https://www.piggame.co.uk/admin/login');
-      window.location.replace('https://www.piggame.co.uk/admin/error');
-    } else {
-      w.innerText = 'Username: ' + y;
-      x.innerText = 'Rank: ' + z + ' Admin';
-    }
-  </script>
 </html>
