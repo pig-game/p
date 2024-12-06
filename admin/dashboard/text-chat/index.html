@@ -5,53 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Text Chat - Pig Game Admin</title>
     <style>
-      article {
-        font-family: Comic Sans MS;
-      }
-      div.css-div-class-display-inline {
-        display: inline;
+      body {
+        font-family: 'Comic Sans MS', sans-serif;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
       }
       header {
         font-size: 30px;
         background-color: grey;
-        font-family: Sans-Serif;
+        font-family: 'Sans-Serif';
+        padding: 10px;
+        text-align: center;
+        color: white;
+      }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
+      nav ul li {
+        margin: 0 10px;
       }
       nav ul li.selected {
         text-decoration: underline;
       }
       nav ul li a {
-        color: black;
+        color: white;
+        text-decoration: none;
       }
       nav ul li a:hover {
         text-decoration: underline;
       }
-      div.container {}
+      article {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
       iframe {
         width: 100%;
-        height: 70vh; /* 70% of the viewport height */
+        height: 100%;
         border: none;
       }
       @media (max-width: 600px) {
         iframe {
-          height: 60vh; /* 60% of the viewport height on smaller screens */
+          height: 60vh;
         }
       }
     </style>
   </head>
   <body>
-    <center>
-      <header>
-        <h1>Pig Game Admin</h1>
-        <nav>
-          <ul>
-            <li class="selected">Home</li>
-            <li><a href="text-chat">Text Chat</a></li>
-          </ul>
-        </nav>
-      </header>
-      <article>
-        <iframe src="iframe"></iframe>
-      </article>
-    </center>
+    <header>
+      <h1>Pig Game Admin</h1>
+      <nav>
+        <ul>
+          <li class="selected">Home</li>
+          <li><a href="text-chat">Text Chat</a></li>
+        </ul>
+      </nav>
+    </header>
+    <article>
+      <iframe src="iframe"></iframe>
+    </article>
   </body>
 </html>
