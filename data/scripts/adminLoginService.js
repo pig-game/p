@@ -14,10 +14,10 @@ var data = {
     'OVermunt': 'HE734FHG67'
 };
 var ranks = {
-    'VBurden': 'basic',
-    'TGreen': 'senior',
-    'DKennedy': 'senior',
-    'OVermunt': 'full'
+    'VBurden': 'Basic',
+    'TGreen': 'Senior',
+    'DKennedy': 'Senior',
+    'OVermunt': 'Full'
 };
 if (username in data) {
     if (data[username] === password) {
