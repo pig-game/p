@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Error</title>
+    <style>
+      body {
+        font-family: sans serif;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Something went wrong</h1>
+    <p id="text"></p>
+    <button onclick="changeURL()" id="button">
+  </body>
+  <script>
+    document.getElementById('text').innerHTML = sessionStorage.getItem('errorText');
+    document.getElementById('button').innerHTML = sessionStorage.getItem('buttonText');
+    function changeURL() {
+      window.location.replace(sessionStorage.getItem('buttonSite');
+    }
+  </script>
+</html>
