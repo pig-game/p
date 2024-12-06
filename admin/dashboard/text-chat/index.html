@@ -1,6 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
-    <title>Home - Pig Game Admin</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Chat - Pig Game Admin</title>
     <style>
       article {
         font-family: Comic Sans MS;
@@ -23,6 +26,16 @@
         text-decoration: underline;
       }
       div.container {}
+      iframe {
+        width: 100%;
+        height: 70vh; /* 70% of the viewport height */
+        border: none;
+      }
+      @media (max-width: 600px) {
+        iframe {
+          height: 60vh; /* 60% of the viewport height on smaller screens */
+        }
+      }
     </style>
   </head>
   <body>
