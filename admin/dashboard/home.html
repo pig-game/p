@@ -54,13 +54,14 @@
     var x = document.getElementById('admin-rank-checker-text-2');
     var y = sessionStorage.getItem('currentAccount');
     var z = sessionStorage.getItem('userRank');
-    if (x == null) || (z == null) {
+    if ((x == null) || (z == null)) {
       sessionStorage.setItem('errorText', 'Your account data was not right. This could be caused by going to the Admin Home Page without going through the login page. Otherwise, this is probably just a rare error. If this happens again, please contact <a href="odhran.vermunt@gmail.com">Odhran Vermunt</a>.');
       sessionStorage.setItem('buttonText', 'Click here to continue');
+      sessionStorage.setItem('buttonSite', 'https://www.piggame.co.uk/admin/login');
       window.location.replace('https://www.piggame.co.uk/admin/error');
     } else {
       w.innerText = 'Username: ' + y;
-      x.innerText = 'Rank: ' + z + 'Admin'
+      x.innerText = 'Rank: ' + z + 'Admin';
     }
   </script>
 </html>
