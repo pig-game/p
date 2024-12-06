@@ -22,6 +22,7 @@
       nav ul li a:hover {
         text-decoration: underline;
       }
+      div.container {}
     </style>
   </head>
   <body>
@@ -38,20 +39,28 @@
       <article>
         <h1>Random Stuff...</h1>
         <p>Hi guys! I'm still coding this Admin site, but the text chat works! I'll still need to code some stuff though.</p>
-        <h2>Admin rank checker</h2>
-        <p>Your Admin rank is:</p>
-        <p id="admin-rank-checker-text-1">Please wait.</p>
-        <p id="admin-rank-checker-text-2">Checking your Admin rank...</p>
+        <div class="container" id="rankchecker">
+          <h2 class="container-heading">Admin rank checker</h2>
+          <p>Your Admin rank is:</p>
+          <p id="admin-rank-checker-text-1">Please wait.</p>
+          <p id="admin-rank-checker-text-2">Checking your Admin rank...</p>
+          <p>To ask if you can have your rank changed, message Odhran Vermunt on the <a href="text-chat">Text Chat</a>.</p>
+        </div>
       </article>
     </center>
   </body>
   <script>
-    var z = document.getElementById('admin-rank-checker-text-1');
-    var y = document.getElementById('admin-rank-checker-text-1');
-    var x = sessionStorage.getItem('currentAccount');
+    var w = document.getElementById('admin-rank-checker-text-1');
+    var x = document.getElementById('admin-rank-checker-text-2');
+    var y = sessionStorage.getItem('currentAccount');
+    var z = sessionStorage.getItem('userRank');
     if (x == null) || (z == null) {
       sessionStorage.setItem('errorText', 'Your account data was not right. This could be caused by going to the Admin Home Page without going through the login page. Otherwise, this is probably just a rare error. If this happens again, please contact <a href="odhran.vermunt@gmail.com">Odhran Vermunt</a>.');
       sessionStorage.setItem('buttonText', 'Click here to continue');
       window.location.replace('https://www.piggame.co.uk/admin/error');
+    } else {
+      w.innerText = 'Username: ' + y;
+      x.innerText = 'Rank: ' + z + 'Admin'
+    }
   </script>
 </html>
