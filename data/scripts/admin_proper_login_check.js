@@ -10,10 +10,10 @@ var ranks = {
     'DKennedy': 'Basic',
     'OVermunt': 'Full'
 };
+const username = sessionStorage.getItem('currentAccount') const rank = sessionStorage.getItem('userRank');
 if (username in data) {
-    if (data[username] === password) {
-        sessionStorage.setItem('currentAccount', username);
-        sessionStorage.setItem('userRank', ranks[username]);
+    if (ranks[username] == rank) {
+        //continue
     } else {
         sessionStorage.setItem('errorText', 'Your account data was not right. This could be caused by going to the Admin Home Page without going through the login page. Otherwise, this is probably just a rare error. If this happens again, please contact <a href="mailto:odhran.vermunt@gmail.com">Odhran Vermunt</a>.');
         sessionStorage.setItem('buttonText', 'Click here to continue');
