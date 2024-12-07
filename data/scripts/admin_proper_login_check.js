@@ -1,3 +1,4 @@
+console.info('ϟSCRIPT-LOADED: admin_proper_login_check.js');
 var data = {
     'VBurden': 'PG426',
     'TGreen': 'ZK618',
