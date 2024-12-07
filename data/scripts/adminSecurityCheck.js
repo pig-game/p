@@ -1,5 +1,5 @@
 //hack prevention
-console.info('ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg');
+console.info('ϟSCRIPT-LOAD: adminSecurityCheck.js | SUCCESFUL');
 var ca = sessionStorage.getItem('currentAccount'); var referrer = document.referrer;
 if (referrer == '') {
   window.location.replace('https://www.piggame.co.uk/admin/login?source=loginsericewrongurl');
