@@ -147,10 +147,10 @@
         messageElement.textContent = `${message.name}: ${message.text}`;
         document.getElementById('messages').appendChild(messageElement);
         document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
-        // Show notification 
+        /*/ Show notification 
         if (Notification.permission === "granted") { 
           new Notification('New Message from ' + message.name, 
-                           { body: message.text }); }
+                           { body: message.text }); }*/
       });
 
       // Send message
