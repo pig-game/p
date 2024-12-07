@@ -115,6 +115,10 @@
     <script>
       window.onload = function() {
         document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+        // Request notification permission 
+        if (Notification.permission !== "granted") { 
+          Notification.requestPermission(); 
+        }
       };
       // Replace with your Firebase configuration
       const firebaseConfig = {
@@ -143,6 +147,10 @@
         messageElement.textContent = `${message.name}: ${message.text}`;
         document.getElementById('messages').appendChild(messageElement);
         document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+        // Show notification 
+        if (Notification.permission === "granted") { 
+          new Notification('New Message from ' + message.name, 
+                           { body: message.text }); }
       });
 
       // Send message
