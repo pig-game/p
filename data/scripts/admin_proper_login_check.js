@@ -10,7 +10,8 @@ var ranks = {
     'DKennedy': 'Basic',
     'OVermunt': 'Full'
 };
-const username = sessionStorage.getItem('currentAccount'); const rank = sessionStorage.getItem('userRank');
+var username = sessionStorage.getItem('currentAccount'); 
+var rank = sessionStorage.getItem('userRank');
 if (username in data) {
     if (ranks[username] == rank) {
         //continue
