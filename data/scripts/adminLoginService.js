@@ -16,7 +16,7 @@ var data = {
 var ranks = {
     'VBurden': 'Basic',
     'TGreen': 'Senior',
-    'DKennedy': 'Senior',
+    'DKennedy': 'Basic',
     'OVermunt': 'Full'
 };
 if (username in data) {
