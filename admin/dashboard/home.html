@@ -83,7 +83,7 @@
       var y = sessionStorage.getItem('currentAccount');
       var z = sessionStorage.getItem('userRank');
       if ((x == null) || (z == null)) {
-        sessionStorage.setItem('errorText', 'Your account data was not right. This could be caused by going to the Admin Home Page without going through the login page. Otherwise, this is probably just a rare error. If this happens again, please contact <a href="odhran.vermunt@gmail.com">Odhran Vermunt</a>.');
+        sessionStorage.setItem('errorText', 'Your account data was not right. This could be caused by going to the Admin Home Page without going through the login page. Otherwise, this is probably just a rare error. If this happens again, please contact <a href="mailto:odhran.vermunt@gmail.com">Odhran Vermunt</a>.');
         sessionStorage.setItem('buttonText', 'Click here to continue');
         sessionStorage.setItem('buttonSite', 'https://www.piggame.co.uk/admin/login');
         window.location.replace('https://www.piggame.co.uk/admin/error');
