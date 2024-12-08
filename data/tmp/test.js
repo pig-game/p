@@ -1,0 +1,1 @@
+javascript:(function(){var z=document.body;var item=0;function d(){if(item==0){z.style="color:red;";}else if(item==1){z.style="color:orange;";}else if(item==2){z.style="color:yellow;";}else if(item==3){z.style="color:green;";}else{z.style="color:blue;";item=0;}item+=1;}setInterval(d,500);})();
