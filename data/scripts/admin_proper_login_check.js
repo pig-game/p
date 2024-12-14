@@ -1,4 +1,4 @@
-console.info('ϟSCRIPT-LOADED: admin_proper_login_check.js');
+console.info('ϟSCRIPT-LOAD: admin_proper_login_check.js [SUCCESFUL]');
 var data = {
     'VBurden': 'PG426',
     'TGreen': 'ZK618',
@@ -6,9 +6,9 @@ var data = {
     'OVermunt': 'HE734FHG67'
 };
 var ranks = {
-    'VBurden': 'Basic',
+    'VBurden': 'Standard',
     'TGreen': 'Senior',
-    'DKennedy': 'Basic',
+    'DKennedy': 'Senior',
     'OVermunt': 'Full'
 };
 var username = sessionStorage.getItem('currentAccount'); 
