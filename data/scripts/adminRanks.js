@@ -1,6 +1,6 @@
 var ranks = {
-    'VBurden': 'Basic',
+    'VBurden': 'Standard',
     'TGreen': 'Senior',
-    'DKennedy': 'Basic',
+    'DKennedy': 'Senior',
     'OVermunt': 'Full'
 };
