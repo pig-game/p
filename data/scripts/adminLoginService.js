@@ -14,9 +14,9 @@ var data = {
     'OVermunt': 'HE734FHG67'
 };
 var ranks = {
-    'VBurden': 'Basic',
+    'VBurden': 'Standard',
     'TGreen': 'Senior',
-    'DKennedy': 'Basic',
+    'DKennedy': 'Senior',
     'OVermunt': 'Full'
 };
 if (username in data) {
