@@ -3,14 +3,20 @@ var data = {
     'VBurden': 'PG426',
     'TGreen': 'ZK618',
     'DKennedy': 'JB393',
-    'OVermunt': 'HE734FHG67'
+    'OVermunt': 'HE734FHG67',
+    'LKane': 'ZB475',
+    'POcallaghan', 'TB493'
 };
 var ranks = {
     'VBurden': 'Standard',
     'TGreen': 'Senior',
     'DKennedy': 'Senior',
-    'OVermunt': 'Full'
+    'OVermunt': 'Full',
+    'LKane': 'Basic',
+    'POcallaghan', 'Basic'
 };
+var lockedAccounts = {
+    
 var username = sessionStorage.getItem('currentAccount'); 
 var rank = sessionStorage.getItem('userRank');
 if (username in data) {
