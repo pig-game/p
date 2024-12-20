@@ -5,7 +5,7 @@ var data = {
     'DKennedy': 'JB393',
     'OVermunt': 'HE734FHG67',
     'LKane': 'ZB475',
-    'POcallaghan', 'TB493'
+    'POcallaghan': 'TB493'
 };
 var ranks = {
     'VBurden': 'Standard',
@@ -13,7 +13,7 @@ var ranks = {
     'DKennedy': 'Senior',
     'OVermunt': 'Full',
     'LKane': 'Basic',
-    'POcallaghan', 'Basic'
+    'POcallaghan': 'Basic'
 };
 var lockedAccounts = {
     'VBurden': 'FALSE',
@@ -21,5 +21,5 @@ var lockedAccounts = {
     'DKennedy': 'TRUE',
     'OVermunt': 'FALSE',
     'LKane': 'FALSE',
-    'POcallaghan', 'FALSE'
+    'POcallaghan': 'FALSE'
 };
