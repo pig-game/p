@@ -1,4 +1,4 @@
-console.info('ϟSCRIPT-LOAD: admin_proper_login_check.js [SUCCESFUL]');
+console.info('ϟSCRIPT-LOAD: adminData.js [SUCCESFUL]');
 var data = {
     'VBurden': 'PG426',
     'TGreen': 'ZK618',
