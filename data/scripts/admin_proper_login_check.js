@@ -16,7 +16,7 @@ if (username in data) {
     sessionStorage.setItem('buttonSite', 'https://www.piggame.co.uk/admin/login');
     window.location.replace('https://www.piggame.co.uk/admin/error');
 }
-if (lockedAccount[username] == 'TRUE') {
+if (lockedAccounts[username] == 'TRUE') {
     window.location.replace('https://www.piggame.co.uk/admin/locked-account');
 } else{
     //continue
