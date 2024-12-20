@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Locked Account</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <center>
+      <img src='/data/images/padlock.png'/>
+      <h1>This account is locked.</h1>
+      <p>This account has been locked.</p>
+      <p>You can't access this account at the moment.</p>
+      <button onclick="changeurl()">Back</button>
+    </center>
+  </body>
+</html>
+<script>
+  function changeurl() {
+    window.location.href='https://www.piggame.co.uk/admin/login?source=lockedaccount'
+  }
+</script>
