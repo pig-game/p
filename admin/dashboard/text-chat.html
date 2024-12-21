@@ -6,6 +6,7 @@
     <title>Text Chat - Pig Game Admin</title>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
     <style>
       body {
         font-family: 'Arial', sans-serif;
@@ -96,6 +97,119 @@
     </style>
     <script src="https://www.piggame.co.uk/data/scripts/adminData.js"></script>
     <script src="https://www.piggame.co.uk/data/scripts/admin_proper_login_check.js"></script>
+    <script>
+      window.onload = function() {
+        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+        if (Notification.permission !== "granted") { 
+          Notification.requestPermission(); 
+        }
+        messaging.onMessage((payload) => {
+          new Notification(payload.notification.title, {
+            body: payload.notification.body,
+          });
+        });
+      };
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyCHIQ8HB8SDDXkorxfufFCvJyQQ-a3AsZ4",
+        authDomain: "pig-game-admin-text-chat.firebaseapp.com",
+        databaseURL: "https://pig-game-admin-text-chat-default-rtdb.firebaseio.com",
+        projectId: "pig-game-admin-text-chat",
+        storageBucket: "pig-game-admin-text-chat.firebasestorage.app",
+        messagingSenderId: "591073526053",
+        appId: "1:591073526053:web:19a3c8c576b0462f935acc"
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const database = firebase.database();
+      const messagesRef = database.ref('messages');
+      const messaging = firebase.messaging();
+
+      messagesRef.on('child_added', (snapshot) => {
+        const message = snapshot.val();
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+
+        if (message.name === 'pollpost') {
+          messageElement.style = 'background-color: lightblue;';
+
+          let pollHTML = `<strong>${message.Title}</strong><br>`;
+          for (let key in message) {
+            if (key.startsWith('Option')) {
+              pollHTML += `<input type="radio" name="poll" value="${message[key]}"> ${message[key]}<br>`;
+            }
+          }
+          messageElement.innerHTML = pollHTML;
+        } else if (message.name === 'blogpost') {
+          messageElement.style = 'background-color: yellow; text-align: center;';
+          messageElement.textContent = `${message.text}`;
+        } else {
+          messageElement.textContent = `${message.name}: ${message.text}`;
+        }
+
+        document.getElementById('messages').appendChild(messageElement);
+        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+
+        messaging.getToken().then((currentToken) => {
+          if (currentToken) {
+            database.ref('tokens').push(currentToken);
+          }
+        });
+
+        messaging.onTokenRefresh(() => {
+          messaging.getToken().then((refreshedToken) => {
+            database.ref('tokens').push(refreshedToken);
+          }).catch((err) => {
+            console.log('Unable to retrieve refreshed token', err);
+          });
+        });
+      });
+
+      document.getElementById('send-button').addEventListener('click', () => {
+        const messageInput = document.getElementById('message-input');
+        const message = messageInput.value;
+        if (message !== '') {
+          messagesRef.push({
+            name: sessionStorage.getItem('currentAccount'),
+            text: message
+          });
+          messageInput.value = '';
+
+          messagesRef.once('value', (snapshot) => {
+            snapshot.forEach((childSnapshot) => {
+              const childData = childSnapshot.val();
+              if (childData.name && childData.text) {
+                messaging.getToken().then((currentToken) => {
+                  if (currentToken) {
+                    new Notification(childData.name, {
+                      body: childData.text,
+                    });
+                  }
+                }).catch((err) => {
+                  console.log('Error getting token for notification', err);
+                });
+              }
+            });
+          });
+        }
+      });
+
+      function createPoll() {
+        const pollQuestion = prompt("Enter poll question:");
+        const pollOptions = prompt("Enter poll options separated by commas:");
+        if (pollQuestion && pollOptions) {
+          const pollRef = database.ref('polls').push();
+          pollRef.set({
+            name: 'pollpost',
+            Title: pollQuestion,
+            ...pollOptions.split(',').reduce((acc, opt, index) => {
+              acc[`Option${index + 1}`] = opt.trim();
+              return acc;
+            }, {})
+          });
+        }
+      }
+    </script>
   </head>
   <body>
     <header>
@@ -113,61 +227,6 @@
       <input type="text" id="message-input" placeholder="Type your message...">
       <button id="send-button">Send</button>
     </div>
-
-    <script>
-      window.onload = function() {
-        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
-        // Request notification permission 
-        if (Notification.permission !== "granted") { 
-          Notification.requestPermission(); 
-        }
-      };
-      // Replace with your Firebase configuration
-      const firebaseConfig = {
-        apiKey: "AIzaSyCHIQ8HB8SDDXkorxfufFCvJyQQ-a3AsZ4",
-        authDomain: "pig-game-admin-text-chat.firebaseapp.com",
-        databaseURL: "https://pig-game-admin-text-chat-default-rtdb.firebaseio.com",
-        projectId: "pig-game-admin-text-chat",
-        storageBucket: "pig-game-admin-text-chat.firebasestorage.app",
-        messagingSenderId: "591073526053",
-        appId: "1:591073526053:web:19a3c8c576b0462f935acc"
-      };
-      // Initialize Firebase
-      const app = firebase.initializeApp(firebaseConfig);
-      const database = firebase.database();
-      const messagesRef = database.ref('messages');
-
-      // Display messages
-      messagesRef.on('child_added', (snapshot) => {
-        const message = snapshot.val();
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('message');
-        if (message.name == 'blogpost') {
-          messageElement.style = 'background-color:yellow; text-align: center;';
-          messageElement.textContent = `${message.text}`;
-        } else
-        messageElement.textContent = `${message.name}: ${message.text}`;
-        document.getElementById('messages').appendChild(messageElement);
-        document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
-        /*/ Show notification 
-        if (Notification.permission === "granted") { 
-          new Notification('New Message from ' + message.name, 
-                           { body: message.text }); }*/
-      });
-
-      // Send message
-      document.getElementById('send-button').addEventListener('click', () => {
-        const messageInput = document.getElementById('message-input');
-        const message = messageInput.value;
-        if (message !== '') {
-          messagesRef.push({
-            name: sessionStorage.getItem('currentAccount'), // Replace with user name
-            text: message
-          });
-          messageInput.value = '';
-        }
-      });
-    </script>
-    
+    <button onclick="createPoll()">Create Poll</button>
   </body>
 </html>
