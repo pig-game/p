@@ -143,7 +143,7 @@
 
           let pollHTML = `<strong>${message.Title}</strong><br>`;
           for (let key in message) {
-            if (key.startsWith('Option')) {
+            if (key.startsWith('Option') && !key.endsWith('-votes')) {
               pollHTML += `<input type="radio" name="poll-${snapshot.key}" value="${message[key]}" onclick="vote('${snapshot.key}', '${key}')"> ${message[key]}<br>`;
               pollHTML += `<ul id="${snapshot.key}-${key}-votes"></ul>`;
             }
@@ -152,9 +152,10 @@
 
           // Show votes
           for (let key in message) {
-            if (key.startsWith('Option')) {
-              const votes = message[`${key}-votes`] || [];
-              const votesElement = document.getElementById(`${snapshot.key}-${key}-votes`);
+            if (key.startsWith('Option') && key.endsWith('-votes')) {
+              const optionKey = key.replace('-votes', '');
+              const votes = message[key] || [];
+              const votesElement = document.getElementById(`${snapshot.key}-${optionKey}-votes`);
               if (votesElement) {
                 votesElement.innerHTML = votes.map(user => `<li>${user}</li>`).join('');
               }
@@ -192,8 +193,8 @@
           let voted = false;
 
           for (let key in poll) {
-            if (key.startsWith('Option') && key !== optionKey) {
-              const votes = poll[`${key}-votes`] || [];
+            if (key.startsWith('Option') && key.endsWith('-votes')) {
+              const votes = poll[key] || [];
               if (votes.includes(user)) {
                 voted = true;
                 break;
