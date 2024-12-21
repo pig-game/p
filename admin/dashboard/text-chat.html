@@ -208,7 +208,7 @@
               pollRef.child(`${optionKey}-votes`).set(optionVotes);
               const votesElement = document.getElementById(`${pollId}-${optionKey}-votes`);
               if (votesElement) {
-                votesElement.innerHTML += `<li>${user}</li>`;
+                votesElement.innerHTML = optionVotes.map(user => `<li>${user}</li>`).join('');
               }
             }
           }
