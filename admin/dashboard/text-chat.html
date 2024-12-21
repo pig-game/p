@@ -6,7 +6,6 @@
     <title>Text Chat - Pig Game Admin</title>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-messaging.js"></script>
     <style>
       body {
         font-family: 'Arial', sans-serif;
@@ -118,14 +117,6 @@
     <script>
       window.onload = function() {
         document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
-        if (Notification.permission !== "granted") { 
-          Notification.requestPermission(); 
-        }
-        messaging.onMessage((payload) => {
-          new Notification(payload.notification.title, {
-            body: payload.notification.body,
-          });
-        });
       };
 
       const firebaseConfig = {
@@ -141,7 +132,6 @@
       firebase.initializeApp(firebaseConfig);
       const database = firebase.database();
       const messagesRef = database.ref('messages');
-      const messaging = firebase.messaging();
 
       messagesRef.on('child_added', (snapshot) => {
         const message = snapshot.val();
@@ -167,20 +157,6 @@
 
         document.getElementById('messages').appendChild(messageElement);
         document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
-
-        messaging.getToken().then((currentToken) => {
-          if (currentToken) {
-            database.ref('tokens').push(currentToken);
-          }
-        });
-
-        messaging.onTokenRefresh(() => {
-          messaging.getToken().then((refreshedToken) => {
-            database.ref('tokens').push(refreshedToken);
-          }).catch((err) => {
-            console.log('Unable to retrieve refreshed token', err);
-          });
-        });
       });
 
       document.getElementById('send-button').addEventListener('click', () => {
@@ -192,23 +168,6 @@
             text: message
           });
           messageInput.value = '';
-
-          messagesRef.once('value', (snapshot) => {
-            snapshot.forEach((childSnapshot) => {
-              const childData = childSnapshot.val();
-              if (childData.name && childData.text) {
-                messaging.getToken().then((currentToken) => {
-                  if (currentToken) {
-                    new Notification(childData.name, {
-                      body: childData.text,
-                    });
-                  }
-                }).catch((err) => {
-                  console.log('Error getting token for notification', err);
-                });
-              }
-            });
-          });
         }
       });
     </script>
