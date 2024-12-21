@@ -1,20 +1,37 @@
+<!DOCTYPE html>
 <html>
   <head>
     <title>Locked Account</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
       body {
         font-family: sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+      .container {
+        text-align: center;
+        padding: 20px;
+      }
+      img {
+        width: 100%;
+        max-width: 150px;
+        height: auto;
       }
     </style>
   </head>
   <body>
-    <center>
-      <img src='/data/images/padlock.png'/>
+    <div class="container">
+      <img src='/data/images/padlock.png' alt="Padlock">
       <h1>This account is locked.</h1>
       <p>This account has been locked.</p>
       <p>You can't access this account at the moment.</p>
       <button onclick="changeurl()">Back</button>
-    </center>
+    </div>
   </body>
 </html>
 <script>
