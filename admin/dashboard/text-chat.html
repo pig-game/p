@@ -144,10 +144,20 @@
           let pollHTML = `<strong>${message.Title}</strong><br>`;
           for (let key in message) {
             if (key.startsWith('Option')) {
-              pollHTML += `<input type="radio" name="poll" value="${message[key]}"> ${message[key]}<br>`;
+              pollHTML += `<input type="radio" name="poll" value="${message[key]}" onclick="vote('${snapshot.key}', '${key}')"> ${message[key]}<br>`;
+              pollHTML += `<ul id="${key}-votes"></ul>`;
             }
           }
           messageElement.innerHTML = pollHTML;
+
+          // Show votes
+          for (let key in message) {
+            if (key.startsWith('Option')) {
+              const votes = message[`${key}-votes`] || [];
+              const votesElement = document.getElementById(`${key}-votes`);
+              votesElement.innerHTML = votes.map(user => `<li>${user}</li>`).join('');
+            }
+          }
         } else if (message.name === 'blogpost') {
           messageElement.style = 'background-color: yellow; text-align: center;';
           messageElement.textContent = `${message.text}`;
@@ -170,6 +180,34 @@
           messageInput.value = '';
         }
       });
+
+      function vote(pollId, optionKey) {
+        const user = localStorage.getItem('currentAccount');
+        const pollRef = database.ref(`messages/${pollId}`);
+
+        pollRef.once('value', (snapshot) => {
+          const poll = snapshot.val();
+          let voted = false;
+
+          for (let key in poll) {
+            if (key.startsWith('Option') && key !== optionKey) {
+              const votes = poll[`${key}-votes`] || [];
+              if (votes.includes(user)) {
+                voted = true;
+                break;
+              }
+            }
+          }
+
+          if (!voted) {
+            const optionVotes = poll[`${optionKey}-votes`] || [];
+            if (!optionVotes.includes(user)) {
+              optionVotes.push(user);
+              pollRef.child(`${optionKey}-votes`).set(optionVotes);
+            }
+          }
+        });
+      }
     </script>
   </body>
 </html>
