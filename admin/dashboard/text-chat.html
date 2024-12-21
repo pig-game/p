@@ -155,7 +155,9 @@
             if (key.startsWith('Option')) {
               const votes = message[`${key}-votes`] || [];
               const votesElement = document.getElementById(`${snapshot.key}-${key}-votes`);
-              votesElement.innerHTML = votes.map(user => `<li>${user}</li>`).join('');
+              if (votesElement) {
+                votesElement.innerHTML = votes.map(user => `<li>${user}</li>`).join('');
+              }
             }
           }
         } else if (message.name === 'blogpost') {
@@ -204,7 +206,10 @@
             if (!optionVotes.includes(user)) {
               optionVotes.push(user);
               pollRef.child(`${optionKey}-votes`).set(optionVotes);
-              document.getElementById(`${pollId}-${optionKey}-votes`).innerHTML += `<li>${user}</li>`;
+              const votesElement = document.getElementById(`${pollId}-${optionKey}-votes`);
+              if (votesElement) {
+                votesElement.innerHTML += `<li>${user}</li>`;
+              }
             }
           }
         });
