@@ -7,18 +7,7 @@ const urlParams = new URLSearchParams(window.location.search); const username = 
 /*var z = Math.floor(Math.random() * 1000000000000);
 document.write("Session ID: " + z);
 sessionStorage.setItem('session-id', z);*/
-var data = {
-    'VBurden': 'PG426',
-    'TGreen': 'ZK618',
-    'DKennedy': 'JB393',
-    'OVermunt': 'HE734FHG67'
-};
-var ranks = {
-    'VBurden': 'Standard',
-    'TGreen': 'Senior',
-    'DKennedy': 'Senior',
-    'OVermunt': 'Full'
-};
+
 if (username in data) {
     if (data[username] === password) {
         sessionStorage.setItem('currentAccount', username);
