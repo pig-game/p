@@ -1,9 +1,4 @@
-var data = {
-    'VBurden': 'PG426',
-    'TGreen': 'ZK618',
-    'DKennedy': 'JB393',
-    'OVermunt': 'HE734FHG67'
-};
+
 sessionStorage.clear();
 
 function login() {
