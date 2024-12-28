@@ -14,7 +14,8 @@ var ranks = {
     'DKennedy': 'Senior',
     'OVermunt': 'Full',
     'LKane': 'Basic',
-    'POcallaghan': 'Basic'
+    'POcallaghan': 'Basic',
+    'JVermunt': 'Senior'
 };
 var lockedAccounts = {
     'VBurden': 'FALSE',
@@ -22,5 +23,6 @@ var lockedAccounts = {
     'DKennedy': 'TRUE',
     'OVermunt': 'FALSE',
     'LKane': 'FALSE',
-    'POcallaghan': 'FALSE'
+    'POcallaghan': 'FALSE',
+    'JVermunt': 'FALSE'
 };
