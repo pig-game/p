@@ -5,7 +5,8 @@ var data = {
     'DKennedy': 'JB393',
     'OVermunt': 'HE734FHG67',
     'LKane': 'ZB475',
-    'POcallaghan': 'TB493'
+    'POcallaghan': 'TB493',
+    'JVermunt': 'AB123'
 };
 var ranks = {
     'VBurden': 'Standard',
