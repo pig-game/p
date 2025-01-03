@@ -52,10 +52,10 @@ img.acount-icon {
     width: 25px;
     height: 25px;
 }
-p.red-error-text {
+.red-error-text {
     color: red;
 }
-p.green-info-text {
+.green-info-text {
     color: green;
 }
 footer {
