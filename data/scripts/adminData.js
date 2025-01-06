@@ -20,7 +20,7 @@ var ranks = {
 var lockedAccounts = {
     'VBurden': 'FALSE',
     'TGreen': 'FALSE',
-    'DKennedy': 'TRUE',
+    'DKennedy': 'FALSE',
     'OVermunt': 'FALSE',
     'LKane': 'FALSE',
     'POcallaghan': 'FALSE',
