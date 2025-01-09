@@ -19,10 +19,10 @@ var ranks = {
 };
 var lockedAccounts = {
     'VBurden': 'FALSE',
-    'TGreen': 'FALSE',
+    'TGreen': 'TRUE',
     'DKennedy': 'FALSE',
     'OVermunt': 'FALSE',
-    'LKane': 'FALSE',
-    'POcallaghan': 'FALSE',
-    'JVermunt': 'FALSE'
+    'LKane': 'TRUE',
+    'POcallaghan': 'TRUE',
+    'JVermunt': 'TRUE'
 };
